@@ -18,3 +18,16 @@ The **frontend** of **Riva**, a pay-as-you-go African streaming platform built f
 - **Axios** (API calls to backend)
 - **Web Speech API / Google Speech-to-Text** (voice search)
 - **Video.js / HTML5 player** (content playback)
+
+
+## 🏃‍♂️ Getting Started
+```bash
+# Clone repo
+git clone https://github.com/<your-org>/riva-frontend
+cd riva-frontend
+
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
