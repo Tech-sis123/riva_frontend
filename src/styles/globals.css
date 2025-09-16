@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0D0D0D; /* deep black background */
+  --foreground: #FFFFFF; /* main text */
+  /* Input/system tokens (light) */
+  --border: #2b2f31; /* subtle border */
+  --muted-bg: #1A1A1A; /* secondary surface */
+}
+
+/* Plus Jakarta Sans font faces */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/fonts/PlusJakartaSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/fonts/PlusJakartaSans-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/fonts/PlusJakartaSans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/fonts/PlusJakartaSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
+  --color-muted: var(--muted-bg);
+
+  /* App brand colors */
+  --color-primary: #E50914; /* Netflix red */
+  --color-secondary: #FF8C00; /* vibrant orange accent */
+  --color-danger: #EF4444; /* error red */
+  --color-success: #22C55E; /* success green */
+  --color-disabled: rgba(229, 9, 20, 0.6); /* faded red */
+  --color-grey: #B3B3B3; /* secondary text */
+  --color-black: #000000;
+  --color-lightGreen: #22C55E; /* match success */
+  --color-teal: #FACC15; /* warning yellow */
+  --color-darkBackground: #0D0D0D; /* background */
+  --color-lightBackground: #1A1A1A; /* surface */
+  --color-lightModeText: #FFFFFF;
+  --color-darkModeText: #FFFFFF;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, Arial, Helvetica,
+    sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0D0D0D;
+    --foreground: #FFFFFF;
+  }
+}
+
+/* Explicit theme override via data-theme attribute for future manual toggle */
+html[data-theme="light"] {
+  --background: #FFFFFF;
+  --foreground: #0D0D0D;
+  --border: #e0e0e0;
+  --muted-bg: #f5f7f8;
+}
+
+html[data-theme="dark"] {
+  --background: #0D0D0D; /* dark background */
+  --foreground: #FFFFFF; /* white text */
+  --border: #2b2f31;
+  --muted-bg: #1A1A1A;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
