@@ -1,6 +1,6 @@
 export const colors = {
-  primary: "#E50914",        // Netflix red
-  secondary: "#FF8C00",      // vibrant orange accent
+  primary: "#6C63FF",        // Netflix red
+  secondary: "#FF4C8B",      // vibrant orange accent
   danger: "#EF4444",         // error red
   success: "#22C55E",        // green
   disabled: "rgba(229, 9, 20, 0.6)", // faded red
