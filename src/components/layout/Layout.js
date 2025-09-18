@@ -10,15 +10,17 @@ import {
   Bell,
   Wallet,
   Users,
-  ShoppingCart,
   FileText,
   DollarSign,
   Home,
-  CreditCard,
-  Store,
-  Receipt,
   User,
   Search,
+  UploadCloud,
+  Radio,
+  BarChart3,
+  MessageSquare,
+  Settings,
+  Film,
 } from "lucide-react";
 import Image from "next/image";
 import CustomText from "@/components/ui/CustomText";
@@ -51,14 +53,14 @@ const Layout = ({ children }) => {
       )}
 
       {/* Enhanced Header */}
-      <header className="bg-background shadow-sm border-b border-border sticky top-0 z-50">
+      <header className="bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm border-b border-border sticky top-0 z-50">
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Left side - Menu button and Logo */}
             <div className="flex items-center">
               <button
                 onClick={toggleSidebar}
-                className="lg:hidden -m-2.5 p-2.5 text-muted hover:text-foreground hover:bg-muted/10 rounded-md transition-colors"
+                className="lg:hidden -m-2.5 p-2.5 text-muted-foreground hover:text-foreground hover:bg-muted/10 rounded-md transition-colors"
               >
                 {sidebarOpen ? (
                   <X className="h-6 w-6" aria-hidden="true" />
@@ -91,18 +93,18 @@ const Layout = ({ children }) => {
             {/* Center - Search Bar (Desktop) */}
             <div className="hidden md:flex flex-1 max-w-md mx-8">
               <div className="relative w-full">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <input
                   type="text"
                   placeholder="Search..."
-                  className="w-full pl-10 pr-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
+                  className="w-full pl-10 pr-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground placeholder:text-muted-foreground"
                 />
               </div>
             </div>
 
             {/* Right side - Notifications and Profile */}
             <div className="flex items-center gap-x-3">
-              <button className="relative p-2 text-muted hover:text-foreground hover:bg-muted/10 rounded-lg transition-colors">
+              <button className="relative p-2 text-muted-foreground hover:text-foreground hover:bg-muted/10 rounded-lg transition-colors">
                 <Bell className="h-5 w-5" />
                 <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-primary text-white text-xs flex items-center justify-center">
                   3
@@ -130,7 +132,7 @@ const Layout = ({ children }) => {
                   <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
                     <User className="h-4 w-4 text-primary" />
                   </div>
-                  <ChevronDown className="h-4 w-4 text-muted" />
+                  <ChevronDown className="h-4 w-4 text-muted-foreground" />
                 </button>
               </div>
             </div>
@@ -169,7 +171,7 @@ const Layout = ({ children }) => {
             </div>
             <button
               onClick={toggleSidebar}
-              className="p-2 text-muted hover:text-foreground hover:bg-muted/10 rounded-md"
+              className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted/10 rounded-md"
             >
               <X className="h-5 w-5" />
             </button>
@@ -192,9 +194,10 @@ const Layout = ({ children }) => {
                 <div className="space-y-1">
                   {[
                     { name: "Dashboard", href: "/dashboard", icon: Home },
-                    { name: "Wallet", href: "/wallet", icon: Wallet },
-                    { name: "Store", href: "/store", icon: Store },
-                    { name: "Orders", href: "/orders", icon: ShoppingCart },
+                   // { name: "Content Library", href: "/content", icon: Film },
+                    { name: "Uploads", href: "/uploads", icon: UploadCloud },
+                  //  { name: "Live Streams", href: "/live", icon: Radio },
+                    { name: "Analytics", href: "/analytics", icon: BarChart3 },
                   ].map((item) => {
                     const isItemActive = isActive(item.href);
                     return (
@@ -204,15 +207,15 @@ const Layout = ({ children }) => {
                         className={`${
                           isItemActive
                             ? "bg-primary/10 text-primary border-r-2 border-primary"
-                            : "text-muted hover:text-foreground hover:bg-muted/10"
+                            : "text-muted-foreground hover:text-foreground hover:bg-muted/10"
                         } group flex items-center gap-x-3 rounded-lg p-3 transition-all duration-200 relative`}
                       >
-                        <item.icon 
+                        <item.icon
                           className={`h-5 w-5 shrink-0 ${
-                            isItemActive 
-                              ? 'text-primary' 
-                              : 'text-muted group-hover:text-foreground'
-                          }`} 
+                            isItemActive
+                              ? "text-primary"
+                              : "text-muted-foreground group-hover:text-foreground"
+                          }`}
                         />
                         <CustomText
                           as="span"
@@ -221,11 +224,6 @@ const Layout = ({ children }) => {
                         >
                           {item.name}
                         </CustomText>
-                        {item.name === "Orders" && cartCount > 0 && (
-                          <span className="ml-auto bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                            {cartCount}
-                          </span>
-                        )}
                       </a>
                     );
                   })}
@@ -241,14 +239,14 @@ const Layout = ({ children }) => {
                   color="muted"
                   className="uppercase tracking-wider mb-4"
                 >
-                  Management
+                  Studio
                 </CustomText>
                 <div className="space-y-1">
                   {[
-                    { name: "Transactions", href: "/transactions", icon: Receipt },
-                    { name: "Cards", href: "/cards", icon: CreditCard },
-                    { name: "Invoices", href: "/invoices", icon: FileText },
-                    { name: "Team", href: "/team", icon: Users },
+                    { name: "Monetization", href: "/monetization", icon: DollarSign },
+                    { name: "Wallet", href: "/wallet", icon: Wallet },
+                 
+                    { name: "Settings", href: "/settings", icon: Settings },
                   ].map((item) => {
                     const isItemActive = isActive(item.href);
                     return (
@@ -258,15 +256,15 @@ const Layout = ({ children }) => {
                         className={`${
                           isItemActive
                             ? "bg-primary/10 text-primary border-r-2 border-primary"
-                            : "text-muted hover:text-foreground hover:bg-muted/10"
+                            : "text-muted-foreground hover:text-foreground hover:bg-muted/10"
                         } group flex items-center gap-x-3 rounded-lg p-3 transition-all duration-200 relative`}
                       >
-                        <item.icon 
+                        <item.icon
                           className={`h-5 w-5 shrink-0 ${
-                            isItemActive 
-                              ? 'text-primary' 
-                              : 'text-muted group-hover:text-foreground'
-                          }`} 
+                            isItemActive
+                              ? "text-primary"
+                              : "text-muted-foreground group-hover:text-foreground"
+                          }`}
                         />
                         <CustomText
                           as="span"
@@ -314,9 +312,7 @@ const Layout = ({ children }) => {
       {/* Main Content */}
       <div className="lg:pl-64">
         <main className="py-6">
-          <div className="px-4 sm:px-6 lg:px-8">
-            {children}
-          </div>
+          <div className="px-4 sm:px-6 lg:px-8">{children}</div>
         </main>
       </div>
     </div>

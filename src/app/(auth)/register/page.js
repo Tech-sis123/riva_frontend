@@ -62,7 +62,7 @@ export default function Register() {
               Welcome to Riva
             </CustomText>
               <CustomText as="p" size="lg" className="opacity-90 text-white">
-                Join thousands of agents building their success with our platform
+                Join thousands of creators building their success with our platform
             </CustomText>
           </div>
         </div>
@@ -99,7 +99,7 @@ export default function Register() {
               color="foreground"
               className="mb-2"
             >
-              Agent Registration
+              Creator Registration
             </CustomText>
           </div>
 

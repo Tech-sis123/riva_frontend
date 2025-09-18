@@ -39,7 +39,7 @@ export default function CustomText({
       colorClass = "text-foreground";
       break;
     case "muted":
-      colorClass = "text-foreground/70";
+      colorClass = "text-muted-foreground";
       break;
     case "subtle":
       colorClass = "text-foreground/60";

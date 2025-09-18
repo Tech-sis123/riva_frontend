@@ -56,7 +56,7 @@ export default function Login() {
               size="3xl"
               className="mb-4 text-white"
             >
-              Welcome to Riva
+              Welcome to Riva Creators hub
             </CustomText>
             <CustomText as="p" size="lg" className="opacity-90 text-white">
               Join thousands of creators building their success with our platform
