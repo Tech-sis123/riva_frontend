@@ -1,18 +1,14 @@
 "use client";
-import { useGetUsersQuery } from "../services/apiSlice";
-import { useSelector } from "react-redux";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import useAuth from "../hooks/useAuth";
 
 export default function Home() {
-  const { data: users, isLoading } = useGetUsersQuery();
-  const currentUser = useSelector((state) => state.user.user);
+  const router = useRouter();
 
-  if (isLoading) return <p>Loading...</p>;
+  useEffect(() => {
+    router.push("/dashboard");
+  }, [router]);
 
-  return (
-    <div>
-      <h1>Welcome</h1>
-      
-    </div>
-  );
+  return null; // No need to render anything since we're redirecting
 }

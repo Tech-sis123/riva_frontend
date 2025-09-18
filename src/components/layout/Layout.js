@@ -281,7 +281,7 @@ const Layout = ({ children }) => {
             </div>
 
             {/* Pro Upgrade Section */}
-            <div className="mt-auto pt-6 border-t border-border">
+            {/* <div className="mt-auto pt-6 border-t border-border">
               <div className="bg-primary/10 rounded-lg p-4">
                 <CustomText
                   as="h3"
@@ -304,7 +304,7 @@ const Layout = ({ children }) => {
                   Upgrade Now
                 </button>
               </div>
-            </div>
+            </div> */}
           </nav>
         </div>
       </div>
