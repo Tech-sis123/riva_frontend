@@ -108,7 +108,7 @@ const mockKpis = [
   },
   {
     title: "Revenue",
-    value: "$24,560",
+    value: "₦24,560",
     delta: "+8.7%",
     icon: DollarSign,
     accent: "text-secondary",
